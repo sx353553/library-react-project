@@ -1,10 +1,13 @@
+import './App.css'
+import Nav from './assets/components/Nav';
 
 
 
 function App() {
   return (
     <div className="App">
-    test
+      <Nav />
+   
    
     </div>
   );
