@@ -7,13 +7,15 @@ const Discounted = () => {
     <section id="recent">
       <div className="container">
         <div className="row">
-          <div className="section__title">
+          <h2 className="section__title">
             Discounted <span className="purple">Books</span>
-          </div>
-          <div className="book">
-            {books.map((book) => (
-              <Book book={book} key={book.id} />
-            ))}
+          </h2>
+          <div className="books">
+            {books
+              .filter((book) => book.salePrice)
+              .map((book) => (
+                <Book book={book} key={book.id} />
+              ))}
           </div>
         </div>
       </div>
