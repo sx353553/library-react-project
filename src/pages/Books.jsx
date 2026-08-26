@@ -1,5 +1,6 @@
 import React from 'react'
 import { books } from "../data"
+import Book from '../components/Ui/Book'
 
 const Books = () => {
   return (
@@ -20,7 +21,7 @@ const Books = () => {
               <div className="books">
                 {
                   books.map(book => 
-                  <book book={book} key={book.id} />)
+                  <Book book={book} key={book.id} />)
                 }
               </div>
             </div>
