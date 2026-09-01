@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rating from '../components/Ui/Rating';
+import Price from '../components/Ui/Price';
 
 const BookInfo = ({ books }) => {
   return (
@@ -22,9 +23,11 @@ const BookInfo = ({ books }) => {
               <div className="book__selected--description">
                 <h2 className="book__selected--title">Cracking the Coding Interview</h2>
                 <Rating rating="4.5" />
-                <div className="book__selected--price"></div>
+                <div className="book__selected--price">
+                  <Price originalPrice={50} salePrice={20}/> 
+                </div>
               </div>
-            </div>
+            </div> 
           </div>
         </div>
       </main>
