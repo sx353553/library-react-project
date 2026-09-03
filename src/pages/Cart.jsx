@@ -16,12 +16,53 @@ const Cart = () => {
                 <span className="cart__total">Price</span>
               </div>
               <div className="cart__body">
-                <div className="car__item">
+                <div className="cart__item">
                   <div className="cart__book">
-                    <img src="" className="cart__book--img"alt="" />
+                    <img
+                      src="https://m.media-amazon.com/images/I/61mIq2iJUXL._AC_UF1000,1000_QL80_.jpg"
+                      className="cart__book--img"
+                      alt=""
+                    />
+                    <div className="cart__book--info">
+                      <span className="cart__book--title">
+                        Cracking the coding interview
+                      </span>
+                      <button className="cart__book--remove">Remove</button>
+                    </div>
+                  </div>
+                  <div className="cart__quantity">
+                    <input
+                      type="number"
+                      min={0}
+                      max={99}
+                      className="cart__input"
+                    />
+                  </div>
+                  <div className="cart__total">
+                    <span className="cart__book--price">10.00</span>
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="total">
+              <div className="total__item total__subtotal">
+                <span>Subtotal</span>
+                <span>9.00</span>
+              </div>
+              <div className="total__item total__tax">
+                <span>Tax</span>
+                <span>1.00</span>
+              </div>
+              <div className="total__item total__price">
+                <span>total</span>
+                <span>19.00</span>
+              </div>
+              <button
+                className="btn btn__checkout no-cursor"
+                onClick={() => alert(`Haven't gotten around to doing this :(`)}
+              >
+                Proceed to checkout
+              </button>
             </div>
           </div>
         </div>
