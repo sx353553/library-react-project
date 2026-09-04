@@ -7,13 +7,17 @@ import Book from "../components/Ui/Book";
 
 const BookInfo = ({ books, addToCart }) => {
   const { id } = useParams();
-  const book = books.find((book) => +book.id === +id); 
+  const book = books.find((book) => +book.id === +id);
   const [added, setAdded] = useState(false);
 
-   function addBookToCart(book) {
+  function addBookToCart(book) {
     setAdded(true);
     addBookToCart(book);
-   }
+  }
+
+  function bookExistsOnCart() {
+    return CaretPosition.find(book => book.id === +id);
+  }
 
   return (
     <div id="books__body">
@@ -54,10 +58,15 @@ const BookInfo = ({ books, addToCart }) => {
                     quidem consequatur dolorum fuga voluptatum.
                   </p>
                 </div>
-                {
-                  added ? <button className="btn">Checkout</button>
-                }
-                <button className="btn"onClick={() => addToCart(book)}>Add to cart</button>
+                {bookExistsOnCart() ? (
+                  <link to={`/cart`} className="book__link">
+                  <button className="btn">Checkout</button>
+                  </link>
+                ) : (
+                  <button className="btn" onClick={() => addToCart(book)}>
+                    Add to cart
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -68,13 +77,13 @@ const BookInfo = ({ books, addToCart }) => {
               <h2 className="book__selected--title--top">Recommended Books</h2>
             </div>
             <div className="books">
-            {books
-              .filter((book) => book.rating === 5 && +book.id !== +id)
-              .slice(0, 4)
-              .map((book) => (
-                <Book book={book} key={book.id} />
-              ))}
-              </div>
+              {books
+                .filter((book) => book.rating === 5 && +book.id !== +id)
+                .slice(0, 4)
+                .map((book) => (
+                  <Book book={book} key={book.id} />
+                ))}
+            </div>
           </div>
         </div>
       </main>
