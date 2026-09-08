@@ -71,7 +71,7 @@ const Cart = ({ cart, changeQuantity }) => {
                     />
                   </div>
                   <div className="cart__total">
-                    <span className="cart__book--price">10.00</span>
+                    <div className="cart__book--price">${(book.salePrice || book.originalPrice) * book.quantity}</div>
                   </div>
                 </div>
               </div>

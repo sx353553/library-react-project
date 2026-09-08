@@ -17,15 +17,15 @@ function App() {
 
   function changeQuantity(book, quantity) {
    setCart(
-    cart.map(item => {
-    return item.id === book.id 
+    cart.map(item => 
+    item.id === book.id 
       ? {
         ...item,
         quantity: +quantity,
       }
      : item
   
-   })
+   )
   );
   }
 
