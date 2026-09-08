@@ -1,6 +1,14 @@
 import React from "react";
 
 const Cart = ({ cart, changeQuantity }) => {
+  const total = () => {
+    let price = 0;
+    cart.forEach(item =>{
+    price += +((item.salePrice || item.originalPrice) * item.quantity); 
+    });
+     return price;
+    };
+  
   return (
     <div id="books__body">
       <main id="books__main">
@@ -43,51 +51,25 @@ const Cart = ({ cart, changeQuantity }) => {
                         />
                       </div>
                       <div className="cart__total">
-                        <span className="cart__book--price">${(book.salePrice || book.originalPrice).toFixed(2)}</span>
+                       <span className="cart__book--price">${((book.salePrice || book.originalPrice) * book.quantity).toFixed(2)}</span>
                       </div>
                     </div>
                   );
                 })}
-                <div className="cart__item">
-                  <div className="cart__book">
-                    <img
-                      src="https://m.media-amazon.com/images/I/61mIq2iJUXL._AC_UF1000,1000_QL80_.jpg"
-                      className="cart__book--img"
-                      alt=""
-                    />
-                    <div className="cart__book--info">
-                      <span className="cart__book--title">
-                        Cracking the coding interview
-                      </span>
-                      <button className="cart__book--remove">Remove</button>
-                    </div>
-                  </div>
-                  <div className="cart__quantity">
-                    <input
-                      type="number"
-                      min={0}
-                      max={99}
-                      className="cart__input"
-                    />
-                  </div>
-                  <div className="cart__total">
-                    <div className="cart__book--price">${(book.salePrice || book.originalPrice) * book.quantity}</div>
-                  </div>
-                </div>
               </div>
             </div>
             <div className="total">
               <div className="total__item total__subtotal">
                 <span>Subtotal</span>
-                <span>9.00</span>
+                <span>${(total() * 0.9).toFixed(2)}</span>
               </div>
               <div className="total__item total__tax">
                 <span>Tax</span>
-                <span>1.00</span>
+                <span>${(total() * 0.1).toFixed(2)}</span>
               </div>
               <div className="total__item total__price">
                 <span>total</span>
-                <span>19.00</span>
+                <span>${total().toFixed(2) }</span>
               </div>
               <button
                 className="btn btn__checkout no-cursor"
