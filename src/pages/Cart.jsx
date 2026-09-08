@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = () => {
+const Cart = ({ cart, changeQuantity }) => {
   return (
     <div id="books__body">
       <main id="books__main">
@@ -16,6 +16,38 @@ const Cart = () => {
                 <span className="cart__total">Price</span>
               </div>
               <div className="cart__body">
+                {cart.map((book) => {
+                  return (
+                    <div className="cart__item">
+                      <div className="cart__book">
+                        <img
+                          src={book.url}
+                          className="cart__book--img"
+                          alt=""
+                        />
+                        <div className="cart__book--info">
+                          <span className="cart__book--title">
+                           {book.title}
+                          </span>
+                          <button className="cart__book--remove">Remove</button>
+                        </div>
+                      </div>
+                      <div className="cart__quantity">
+                        <input
+                          type="number"
+                          min={0}
+                          max={99}
+                          className="cart__input"
+                          value={book.quantity}
+                          onChange={(event) => changeQuantity(book, event.target.value)}
+                        />
+                      </div>
+                      <div className="cart__total">
+                        <span className="cart__book--price">${(book.salePrice || book.originalPrice).toFixed(2)}</span>
+                      </div>
+                    </div>
+                  );
+                })}
                 <div className="cart__item">
                   <div className="cart__book">
                     <img
